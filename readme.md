@@ -9,7 +9,7 @@ git commit -m "???"
 
 git push origin master
 
-・リモートからローカルに自分のやつを持ってくる
+・リモートの最新版を自分のローカルに持ってくる
 
 git pull origin master
 
