@@ -1,14 +1,513 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <h1>拝啓ぃいいいいいいい！！！！！！！！！<h1>
-  <h2>紅葉が彩るこの季節ぅううううううう！！！！！！!！<h2>
-  <h3>敬具ぅううううううう！！！！！！！！！<h3>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  hi!
-</body>
-</html>
+<html>
+<!--Allow mobile scaling -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+  /*clear default wiki settings */
+  #home_logo,
+  #sideMenu,
+  #sideMenu,
+  #top_title,
+  .patrollink {
+    display: none;
+  }
+
+  #content {
+    margin-left: 0px;
+    margin-top: -7px;
+    padding: 0px;
+    width: 100%;
+  }
+
+  body {
+    background-color: white;
+  }
+
+  #bodyContent h1,
+  #bodyContent h2,
+  #bodyContent h3,
+  #bodyContent h4,
+  #bodyContent h5 {
+    margin-bottom: 0px;
+  }
+
+  #bodyContent a[href ^="https://"],
+  .link-https {
+    padding-right: 0px;
+  }
+
+
+  /*general page wrapper */
+  .page_wrapper {
+    background-color: white;
+    display: block;
+    width: 100%;
+  }
+
+  /*center general content of the page */
+  .page_center {
+    margin: auto;
+    max-width: 1600px;
+    width: 95%;
+  }
+
+
+  /*general poster wrapper */
+  .poster_w {
+    float: left;
+    margin: 1%;
+    padding: 0px;
+    width: 90%;
+  }
+
+  /*rows*/
+  .poster_w.content .row {
+    clear: both;
+    float: left;
+    width: 1440px;
+    height: 810px;
+    cursor: pointer;
+  }
+
+
+  /*sections */
+  .poster_w.content .row .section,
+  .poster_w.display #section_text .subsection {
+    float: left;
+  }
+
+  .poster_h.content .line .section,
+  .poster_h.display #section_text .subsection {
+    float: left;
+  }
+
+
+  /*different section sizes*/
+  .poster_w.content .row .section.one,
+  .poster_w.display #section_text .subsection.one {
+    width: 1440px;
+    height: 200px;
+    display: center;
+  }
+
+  .poster_w.content .row .section.two,
+  .poster_w.display #section_text .subsection.two {
+    width: 1440px;
+    height: 160px;
+    display: center;
+  }
+
+  .poster_w.content .row .section.three,
+  .poster_w.display #section_text .subsection.three {
+    width: 1440px;
+    height: 450px;
+    display: center;
+  }
+
+  .poster_w.content .row .section.line,
+  .poster_w.display #section_text .subsection.line {
+    width: 480px;
+    height: 450px;
+  }
+
+  .poster_w.content .column .section.box,
+  .poster_w.display #section_text .subsection.box {
+    width: 480px;
+    height: 175px;
+  }
+
+
+  /*hide title, text and highlight images  by default*/
+  .poster_w.content .row .section .info {
+    display: none;
+  }
+
+  .poster_w.content .column .section .info {
+    display: none;
+  }
+
+  /*font family freeroad*/
+  @font-face {
+    font-family: Freeroad_Regular;
+    src: url(https://2020.igem.org/wiki/images/9/9d/Freeroad_Regular.ttf);
+  }
+
+
+  /*font family freeroad bold */
+  @font-face {
+    font-family: Freeroad_Bold;
+    src: url(https://2020.igem.org/wiki/images/9/94/Freeroad_Bold.ttf);
+  }
+
+
+  /* styling titles h1, h2, h3, h4, h5, h6 */
+  .poster_w h1 {
+    font-size: 32px;
+  }
+
+  .poster_w h2 {
+    font-size: 28px;
+  }
+
+  .poster_w h3 {
+    font-size: 22px;
+  }
+
+  .poster_w h4 {
+    font-size: 18px;
+  }
+
+  .poster_w h5 {
+    font-size: 14px;
+  }
+
+  .poster_w h6 {
+    font-size: 16px;
+  }
+
+
+  /* styling for the titles h1, h2*/
+  .poster_w h1,
+  .poster_w h2 {
+    border-bottom: 0px;
+    color: #131C4E;
+    font-family: Freeroad_Bold, Arial;
+    line-height: initial;
+  }
+
+
+  /* styling for the titles h3, h4, h5, h6 */
+  .poster_w h3,
+  .poster_w h4,
+  .poster_w h5,
+  .poster_w h6 {
+    border-bottom: 0px;
+    color: #0069A6;
+    font-family: Freeroad_Regular, Arial;
+    line-height: initial;
+  }
+
+
+  /* font size for text and lists */
+  .poster_w p,
+  .poster_w ol,
+  .poster_w ul {
+    font-size: 16px;
+  }
+
+  /*styling for lists */
+  .poster_w ul {
+    font-family: Arial;
+    list-style: disc;
+    padding: 0px;
+  }
+
+  /*styling for all images */
+  .poster_w img {
+    margin-bottom: 0px;
+  }
+
+  /*styling for when the user hovers on the image on the content side*/
+  .poster_w.content img:hover {
+    opacity: 75%;
+  }
+
+  .poster_w.display img:hover {
+    opacity: 100%;
+  }
+
+
+  /*class for clearing between sections */
+  .poster_w .clear {
+    clear: both;
+  }
+
+
+  /*mobile*/
+
+  @media only screen and (max-width: 850px) {
+    .poster_w {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+
+  $(document).ready(function () {
+
+    //clear default settings 
+    $("#HQ_page").attr('id', '');
+
+
+    //setup
+    // grab .first_text class and append it 			
+    var d_title = $('.first_text >  .info > .title').html();
+    var d_text = $('.first_text  > .info > .text').html();
+
+
+    //append .first_text
+    $("#section_title").append(d_title);
+    $("#section_text").append(d_text);
+
+
+    //variables
+    var clicked_id;
+    var p_title;
+    var p_text;
+
+
+    //when the user clicks on a .section
+    $('.section').click(function () {
+
+      //get id of clicked element
+      clicked_id = $(this).attr('id');
+
+      //empty display divs
+      $("#section_title").empty();
+      $("#section_text").empty();
+
+      //get the content selected 
+      p_title = $('#' + clicked_id + '> .info > .title').html();
+      p_text = $('#' + clicked_id + '> .info > .text').html();
+
+      //append selection
+      $("#section_title").append(p_title);
+      $("#section_text").append(p_text);
+
+    });
+  });
+
+</script>
+
+
+<div class="page_wrapper">
+  <div class="page_center">
+
+
+    <div style="padding: 20px 0px; width:95%; margin:auto; font-size:14px;">
+      <h1> Poster: Qdai </h1>
+      <br>
+
+      <h3> Poster Template </h3>
+      <p> This poster template will let you create an interactive poster! The poster is divided in two parts: the visual
+        overview on the left and the documentation on the right. The visual overview is broken down into sections that
+        the user can click on. When a user clicks on a poster section in the visual overview, the documentation on the
+        right will display the text and graphics associated with this section of the poster. You can find the
+        documentation on how to use this template, as well as an example here: <a
+          href="https://2020.igem.org/Competition/Deliverables/Poster">https://2020.igem.org/Competition/Deliverables/Poster</a>
+      </p>
+
+    </div>
+
+
+
+    <!---Place the content of your poster inside this div--->
+    <div class="poster_w content">
+
+      <div class="row" style="width: 1440px; height: 200px;">
+        <!-- This creates a full width section with the id 'title' -->
+        <div class="section one" id="title">
+
+          <!--Here is the image used for the full width section, the size is: 1200 x 200 pixels -->
+          <img src="https://2020.igem.org/wiki/images/f/fb/T--Example--Poster_Title.png"
+            style="width: 1440px; height: 200px;">
+
+          <!--Info: Place the title and text for this section, it will appear when the user clicks on it
+			since the first_text class is used above, this section will appear by default -->
+          <div class="info">
+            <!--Write the title of the section -->
+            <div class="title"> Poster Title</div>
+            <!--Write the text explaining this section -->
+            <div class="text">You should list all authors and their affiliations here. You can also add the project's
+              abstract.</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!--This is the second row of the poster, it contains the inspiration, problem and idea sections --->
+      <div class="row" style="width: 1440px; height: 460px; display:flex; flex-direction: row;">
+        <div class="line" style="width:480px; height:460px; flex-direction: column;">
+          <!-- This creates a third height section with the id ' ??? ' --->
+          <div class="section box" id="inspiration">
+            <!--Here is the image used for the third width section, the size is:  400 x 200 pixels  -->
+            <img src="https://2020.igem.org/wiki/images/f/f3/T--Example--Poster_Inspiration.png"
+              style="width:480px; height:230px;">
+
+            <!--Info: Place the title and text for this section, it will appear when the user clicks on it-->
+            <div class="info">
+
+              <!--Write the title of the section -->
+              <div class="title"> Inspiration </div>
+              <!--Write the text explaining this section -->
+              <div class="text"> What inspired your team? What motivated you to work on this particular project?</div>
+            </div>
+          </div>
+
+          <div class="section box" id="Section1">
+            <!--Here is the image used for the third width section, the size is:  400 x 200 pixels  -->
+            <img src="https://2020.igem.org/wiki/images/5/53/T--Example--Poster_Section1.png"
+              style="width:480px; height:230px;">
+
+            <!--Info: Place the title and text for this section, it will appear when the user clicks on it-->
+            <div class="info">
+
+              <!--Write the title of the section -->
+              <div class="title"> Section1 </div>
+              <!--Write the text explaining this section -->
+              <div class="text">Use this section to explain whatever you would like! Suggestions: Safety, Human
+                Practices, Measurement, etc.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="line" style="width:480px; height:460px; flex-direction: column;">
+          <!-- This creates a third width section with the id 'problem' --->
+          <div class="section box" id="problem">
+            <!--Here is the image used for the third width section, the size is:  400 x 200 pixels  -->
+            <img src="https://2020.igem.org/wiki/images/c/c5/T--Example--Poster_Problem.png"
+              style="width:480px; height:230px;">
+
+            <!--Info: Place the title and text for this section, it will appear when the user clicks on it-->
+            <div class="info">
+
+              <!--Write the title of the section -->
+              <div class="title"> Problem </div>
+              <!--Write the text explaining this section -->
+              <div class="text">What is the problem your team is working to solve? How does it affect the world.</div>
+            </div>
+          </div>
+
+          <div class="section box" id="problem">
+            <!--Here is the image used for the third width section, the size is:  400 x 200 pixels  -->
+            <img src="https://2020.igem.org/wiki/images/e/ec/T--Example--Poster_Section2.png"
+              style="width:480px; height:230px;">
+
+            <!--Info: Place the title and text for this section, it will appear when the user clicks on it-->
+            <div class="info">
+
+              <!--Write the title of the section -->
+              <div class="title"> Problem </div>
+              <!--Write the text explaining this section -->
+              <div class="text">Use this section to explain whatever you would like! Suggestions: Safety, Human
+                Practices, Measurement, etc.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="line" style="width:480px; height:460px; flex-direction: column;">
+          <!-- This creates a third width section with the id 'idea' --->
+          <div class="section box" id="idea">
+            <!--Here is the image used for the third width section, the size is:  400 x 200 pixels  -->
+            <img src="https://2020.igem.org/wiki/images/9/90/T--Example--Poster_Idea.png"
+              style="width:480px; height:230px;">
+
+            <!--Info: Place the title and text for this section, it will appear when the user clicks on it-->
+            <div class="info">
+
+              <!--Write the title of the section -->
+              <div class="title">Idea </div>
+              <!--Write the text explaining this section -->
+              <div class="text">How are you going to solve the problem? Where did the idea come from?</div>
+            </div>
+          </div>
+
+          <!-- This creates a third width section with the id 'idea' --->
+          <div class="section box" id="idea">
+            <!--Here is the image used for the third width section, the size is:  400 x 200 pixels  -->
+            <img src="https://2020.igem.org/wiki/images/9/9e/T--Example--Poster_Section3.png"
+              style="width:480px; height:230px;">
+
+            <!--Info: Place the title and text for this section, it will appear when the user clicks on it-->
+            <div class="info">
+
+              <!--Write the title of the section -->
+              <div class="title">Idea </div>
+              <!--Write the text explaining this section -->
+              <div class="text">Use this section to explain whatever you would like! Suggestions: Safety, Human
+                Practices, Measurement, etc.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--This is the fourth row of the poster, it contains the engineering section --->
+      <div class="row" style="width: 1440px; height: 150px;">
+        <!-- This creates a full width section with the id 'engineering' --->
+        <div class="section r_full_b" id="engineering">
+          <img src="https://2020.igem.org/wiki/images/0/02/T--Example--Poster_Engineering.png"
+            style="width: 1440px; height: 150px;">
+
+          <!--Info: Place the title and text for this section, it will appear when the user clicks on it-->
+          <div class="info">
+
+            <!--Write the title of the section -->
+            <div class="title"> Engineering</div>
+            <!--Write the text explaining this section -->
+            <div class="text"> Here you can explain the engineering process behind your project. </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!--This is where the selected content will be displayed - Don't change this section!-->
+    <div class="poster_w display">
+      <h3 id="section_title"></h3>
+      <p id="section_text"></p>
+    </div>
+
+
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<script>
+
+  $(document).ready(function () {
+
+    //clear default settings 
+    $("#HQ_page").attr('id', '');
+
+
+    //setup
+    // grab .first_text class and append it 			
+    var d_title = $('.first_text >  .info > .title').html();
+    var d_text = $('.first_text  > .info > .text').html();
+
+
+    //append .first_text
+    $("#section_title").append(d_title);
+    $("#section_text").append(d_text);
+
+
+    //variables
+    var clicked_id;
+    var p_title;
+    var p_text;
+
+
+    //when the user clicks on a .section
+    $('.section').click(function () {
+
+      //get id of clicked element
+      clicked_id = $(this).attr('id');
+
+      //empty display divs
+      $("#section_title").empty();
+      $("#section_text").empty();
+
+      //get the content selected 
+      p_title = $('#' + clicked_id + '> .info > .title').html();
+      p_text = $('#' + clicked_id + '> .info > .text').html();
+
+      //append selection
+      $("#section_title").append(p_title);
+      $("#section_text").append(p_text);
+
+    });
+  });
+
+</script>
